@@ -1,6 +1,7 @@
-package com.example.timerapp.gui;
+package com.example.timerapp.view;
 
-import com.example.timerapp.timer.TimeSetter;
+import com.example.timerapp.controller.TimerEvent;
+import com.example.timerapp.model.TimeSetter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +21,8 @@ public class TimerFrame extends JFrame {
         // 初始化计时器
         timeSetter = new TimeSetter(timerLabel);
         timeSetter.initTimer();
+        TimerEvent.keyListener(timeSetter);
+
     }
     private void initComponents(){
         JPanel mainPanel = new JPanel();

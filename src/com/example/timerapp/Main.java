@@ -1,10 +1,11 @@
 package com.example.timerapp;
 
-import com.example.timerapp.gui.TimerFrame;
+import com.example.timerapp.view.TimerFrame;
+import com.example.timerapp.view.TimerView;
 
 public class Main {
     public static void main(String[] args) {
-        TimerFrame timerFrame = new TimerFrame();
-        timerFrame.setVisible(true);
+        TimerView timerView = new TimerView();
+        timerView.setVisible(true);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.timerapp.timer;
+package com.example.timerapp.model;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +8,7 @@ public class TimeSetter {
     private Timer timer;
     private int seconds = 0;
     private boolean isRunning = false;
-    private JLabel timerLabel;
+    private final JLabel timerLabel;
     public TimeSetter(JLabel timerLabel){
         this.timerLabel = timerLabel;
     }
