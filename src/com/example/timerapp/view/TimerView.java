@@ -1,5 +1,7 @@
 package com.example.timerapp.view;
 
+import com.example.timerapp.controller.TimerController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,27 +12,27 @@ public class TimerView extends JFrame {
     private JButton startButton;
     private JButton stopButton;
     private JButton resetButton;
+    private TimerController controller;
 
     public TimerView() {
-        // 初始化界面组件并配置布局
-        initComponents();
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+        JPanel buttonPanel = new JPanel();
 
         // 设置窗口标题等
         setTitle("祭时");
         setSize(300,150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // 初始化界面组件并配置布局
+        initComponents();
 
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());
-
-        JPanel buttonPanel = new JPanel();
+        // 添加组件
         buttonPanel.add(startButton);
         buttonPanel.add(stopButton);
         buttonPanel.add(resetButton);
         mainPanel.add(timerLabel, BorderLayout.CENTER);
         mainPanel.add(buttonPanel,BorderLayout.SOUTH);
         add(mainPanel);
-        // ...
     }
 
     private void initComponents() {
@@ -38,27 +40,36 @@ public class TimerView extends JFrame {
         timerLabel = new JLabel("00:00:00");
         timerLabel.setFont(new Font("Arial", Font.BOLD, 24));
         timerLabel.setHorizontalAlignment(JLabel.CENTER);
-        // 添加按钮的事件监听器
+
 
         startButton = new JButton("开始");
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // 处理开始按钮点击事件
+                controller.startButtonClicked();
             }
         });
 
         stopButton = new JButton("结束");
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // 处理停止按钮点击事件
+                controller.stopButtonClicked();
             }
         });
 
         resetButton = new JButton("重置");
         resetButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // 处理重置按钮点击事件
+                controller.resetButtonClicked();
             }
         });
     }
+
+    public void updateTimeDisplay(String time){
+        timerLabel.setText(time);
+    }
+
+    public void setController(TimerController controller) {
+        this.controller = controller;
+    }
+
 }

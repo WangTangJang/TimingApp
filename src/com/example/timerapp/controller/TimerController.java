@@ -12,12 +12,23 @@ public class TimerController {
         this.view = view;
 
         // 将控制器与视图关联起来
-        // ...
-
+        view.setController(this);
         // 将控制器与模型关联起来
-        // ...
+        model.setController(this);
     }
 
-    // 添加方法用于处理各种事件，例如开始、停止、重置等
-    // ...
+
+    public void startButtonClicked() {
+        model.start();
+    }
+    public void stopButtonClicked(){
+        model.stop();
+    }
+    public void resetButtonClicked(){
+        model.reset();
+    }
+    public void timerTimeChanged(String time){
+        view.updateTimeDisplay(time);
+    }
+
 }
