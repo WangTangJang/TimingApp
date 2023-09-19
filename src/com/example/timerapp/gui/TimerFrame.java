@@ -1,5 +1,7 @@
 package com.example.timerapp.gui;
 
+import com.example.timerapp.timer.TimeSetter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,10 +10,7 @@ import java.awt.event.ActionListener;
 public class TimerFrame extends JFrame {
 
     private JLabel timerLabel;
-    private Timer timer;
-    private int seconds = 0;
-    private boolean isRunning = false;
-
+    TimeSetter timeSetter;
     public TimerFrame(){
         setTitle("祭时");
         setSize(300,150);
@@ -19,7 +18,8 @@ public class TimerFrame extends JFrame {
         // 创建并配置界面组件
         initComponents();
         // 初始化计时器
-        initTimer();
+        timeSetter = new TimeSetter(timerLabel);
+        timeSetter.initTimer();
     }
     private void initComponents(){
         JPanel mainPanel = new JPanel();
@@ -39,7 +39,7 @@ public class TimerFrame extends JFrame {
         JButton startButton = new JButton("开始");
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                startTimer();
+                timeSetter.startTimer();
             }
         });
         buttonPanel.add(startButton);
@@ -48,7 +48,7 @@ public class TimerFrame extends JFrame {
         JButton stopButton = new JButton("停止");
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                stopTimer();
+                timeSetter.stopTimer();
             }
         });
         buttonPanel.add(stopButton);
@@ -57,28 +57,15 @@ public class TimerFrame extends JFrame {
         JButton resetButton = new JButton("重置");
         resetButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                resetTimer();
+                timeSetter.resetTimer();
             }
         });
         buttonPanel.add(resetButton);
+
+        // 将按钮面板添加到主面板
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         // 将主面板添加到窗口
         add(mainPanel);
-    }
-    private void initTimer(){
-
-    }
-    private void startTimer(){
-
-    }
-    private void stopTimer(){
-
-    }
-    private void resetTimer(){
-
-    }
-    private void updateTimerLabel(){
-
     }
 }
