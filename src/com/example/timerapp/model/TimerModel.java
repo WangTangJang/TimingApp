@@ -2,7 +2,6 @@ package com.example.timerapp.model;
 
 import com.example.timerapp.controller.TimerController;
 
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
