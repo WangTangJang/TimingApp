@@ -2,6 +2,7 @@ package com.example.timerapp.model;
 
 import com.example.timerapp.controller.TimerController;
 
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,6 +18,7 @@ public class TimerModel {
     }
 
     public void start() {
+
         if (!isRunning) {
             isRunning = true;
             timer = new Timer();
